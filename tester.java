@@ -87,7 +87,7 @@ public class tester {
 		System.out.println(capAmerica.toString());
 		System.out.println(spiderMan.toString());
 		System.out.println(wolverine.toString());
-		System.out.println("is IronMan equal to his clone?" + ironMan.compareTo(ironManClone));
+		System.out.println("is IronMan equal to his clone? " + ironMan.compareTo(ironManClone));
 
 
 	}

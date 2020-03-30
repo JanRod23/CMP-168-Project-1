@@ -29,7 +29,14 @@ public class Course implements Comparable<Course>{
 	}
 	
 	public String getCourseName() {
-		return "U" + courseDept + courseNum;
+		String isItGraduate = "";
+		if(isGraduateCourse) {
+			isItGraduate = "G";
+		}
+		else {
+			isItGraduate = "U";
+		}
+		return isItGraduate + courseDept + courseNum;
 	}
 	
 	@Override
@@ -48,14 +55,14 @@ public class Course implements Comparable<Course>{
 	
 	@Override
 	public String toString() {
-		String isGraduate ="";
+		String isGraduate = "";
 		if(isGraduateCourse) {
 			isGraduate = "Graduate";
 		}
 		else {
 			isGraduate = "Undergraduate";
 		}
-		return String.format("Course: %3s-%3d | Number of Credits: %02d  | %s%n", courseDept, courseNum, numCredits, isGraduate);
+		return String.format("Course: %3s-%3d | Number of Credits: %02d | %s", courseDept, courseNum, numCredits, isGraduate);
 	}
 	
 	@Override

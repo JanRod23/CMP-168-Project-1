@@ -5,12 +5,14 @@ public class Employee extends Person {
 	private int employeeID = 0;
 	
 	Employee(){
+		super();
 		deptName = "";
 		numEmployees ++;
 		employeeID = numEmployees;
 	}
 	
 	Employee(String deptName){
+		super();
 		this.deptName = deptName;
 		numEmployees ++;
 		employeeID = numEmployees;
@@ -70,6 +72,9 @@ public class Employee extends Person {
 			if(this.getEmployeeID() < otherEmployee.getEmployeeID()) {
 				return -1;
 			}
+		}
+		else {
+		    return super.compareTo(p);
 		}
 		return 0;
 	}

@@ -44,7 +44,7 @@ public class Person implements Comparable<Person> {
 	
 	@Override
 	public String toString() {
-		return String.format("Person: Name: %30s | Birth Year: %4d ", name, birthYear);
+		return String.format("Person: Name: %30s | Birth Year: %4d", name, birthYear);
 	}
 	
 	@Override

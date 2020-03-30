@@ -10,28 +10,28 @@ public class Student extends Person {
 	Student(){
 		super();
 		numStudents += 1;
-		studentID = 0;
-		coursesTaken = new Course[0];
+		studentID = numStudents;
+		coursesTaken = new Course[100];
 		numCoursesTaken = 0;
 		isGraduate = false;
-		major = "";
+		major = "undeclared";
 	}
 	
 	Student(boolean isGraduate){
 		super();
 		numStudents += 1;
-		studentID = 0;
-		coursesTaken = new Course[0];
+		studentID = numStudents;
+		coursesTaken = new Course[100];
 		numCoursesTaken = 0;
 		this.isGraduate = isGraduate;
-		major = "";
+		major = "undeclared";
 	}
 	
 	Student(String major, boolean isGraduate){
 		super();
 		numStudents += 1;
-		studentID = 0;
-		coursesTaken = new Course[0];
+		studentID = numStudents;
+		coursesTaken = new Course[100];
 		numCoursesTaken = 0;
 		this.isGraduate = isGraduate;
 		this.major = major;
@@ -40,8 +40,8 @@ public class Student extends Person {
 	Student(String name, int birthYear, String major, boolean isGraduate){
 		super(name, birthYear);
 		numStudents += 1;
-		studentID = 0;
-		coursesTaken = new Course[0];
+		studentID = numStudents;
+		coursesTaken = new Course[100];
 		numCoursesTaken = 0;
 		this.isGraduate = isGraduate;
 		this.major = major;
@@ -122,7 +122,7 @@ public class Student extends Person {
 	public boolean equals(Object o) {
 		if(o instanceof Student) {
 			Student otherStudent = (Student)o;
-			if(super.equals(otherStudent) && (numStudents == otherStudent.getNumStudents())
+			if(super.equals(otherStudent) && (this.getNumStudents() == otherStudent.getNumStudents())
 				&& (studentID == otherStudent.getStudentID()) 
 				&& (this.getAllCoursesTakenAsString().contentEquals(otherStudent.getAllCoursesTakenAsString())) 
 				&& (numCoursesTaken == otherStudent.getNumCoursesTaken()) 
@@ -160,6 +160,9 @@ public class Student extends Person {
 				return -1;
 			}
 			
+		}
+		else {
+			return super.compareTo(p);
 		}
 		return 0;
 	}

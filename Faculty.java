@@ -5,12 +5,14 @@ public class Faculty extends Employee {
 	private boolean isTenured;
 	
 	Faculty(){
+		super();
 		coursesTaught = new Course[100];
 		numCoursesTaught = 0;
 		isTenured = false;
 	}
 	
 	Faculty(boolean isTenured){
+		super();
 		coursesTaught = new Course[100];
 		numCoursesTaught = 0;
 		this.isTenured = isTenured;
@@ -43,12 +45,14 @@ public class Faculty extends Employee {
 	}
 	
 	public void addCourseTaught(Course course) {
-		coursesTaught[numCoursesTaught] = course;
-		numCoursesTaught +=1;
+		if(numCoursesTaught < 100) {
+			coursesTaught[numCoursesTaught] = course;
+			numCoursesTaught +=1;
+		}
 		
 	}
 	
-	public void addCourseTaught(Course [] course) {
+	public void addCoursesTaught(Course [] course) {
 		for (int i = 0; i < course.length; i++) {
 			coursesTaught[numCoursesTaught] = course[i];
 			numCoursesTaught +=1;
@@ -66,7 +70,7 @@ public class Faculty extends Employee {
 		if ((index < 0) || (index > numCoursesTaught - 1)) {
 			return "";
 		}
-		return coursesTaught[index].getCourseDept() + " - "  + coursesTaught[index].getCourseNum();
+		return coursesTaught[index].getCourseDept() + "-"  + coursesTaught[index].getCourseNum();
 	}
 	
 	public String getAllCoursesTaughtAsString() {
@@ -94,7 +98,14 @@ public class Faculty extends Employee {
 	
 	@Override
 	public String toString() {
-		String output = String.format("%s Faculty: %11s | Number of Courses Taught: %3d | Courses Taught: %s", super.toString(), isTenured, numCoursesTaught, getAllCoursesTaughtAsString());
+		String tenuredString = "";
+		if(isTenured) {
+			tenuredString = "Is Tenured";
+		}
+		else {
+			tenuredString = "Not Tenured";
+		}
+		String output = String.format("%s Faculty: %11s | Number of Courses Taught: %3d | Courses Taught: %s", super.toString(), tenuredString, numCoursesTaught, getAllCoursesTaughtAsString());
 		return output;
 
 	}
@@ -109,6 +120,9 @@ public class Faculty extends Employee {
 			if(this.getNumCoursesTaught() < otherFaculty.getNumCoursesTaught()) {
 				return -1;
 			}
+		}
+		else {
+			 return super.compareTo(p);
 		}
 		return 0;
 	}

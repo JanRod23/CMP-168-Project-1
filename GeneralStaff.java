@@ -8,6 +8,7 @@ public class GeneralStaff extends Employee {
 	}
 	
 	GeneralStaff(String duty){
+		super();
 		this.duty = duty;
 	}
 	
